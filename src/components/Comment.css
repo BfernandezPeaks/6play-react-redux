@@ -1,0 +1,46 @@
+.comment {
+  position: relative;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border-left: 0.25em solid #666;
+  background-color: #eee;
+  font-size: 1.1em;
+}
+.comment:hover {
+  border-color: coral;
+}
+
+.comment pre {
+  margin: 0;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.comment .delete {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  line-height: 0.7em;
+  background-color: #666;
+  color: #eee;
+  text-align: center;
+  cursor: pointer;
+}
+.comment:hover .delete {
+  visibility: visible;
+}
+.comment .delete:hover {
+  background-color: crimson;
+}
+.comment .delete:active {
+  background-color: coral;
+}
+
+.comment .date {
+  text-align: right;
+  font-size: 0.7em;
+  color: #666;
+}
