@@ -13,15 +13,18 @@ class AddComment extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.add(this.state.value);
-    this.setState({ value: '' });
+    if (this.state.value) {
+      const date = new Date();
+      this.props.add({ text: this.state.value, date: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` });
+      this.setState({ value: '' });
+    }
     event.preventDefault();
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <textarea rows="10" cols="80" placeholder="My comment." onChange={this.handleChange} value={this.state.value}></textarea>
+        <textarea rows="6" cols="60" placeholder="My comment." onChange={this.handleChange} value={this.state.value}></textarea>
         <br />
         <input type="submit" value="Send comment" />
       </form>

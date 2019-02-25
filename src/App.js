@@ -8,21 +8,27 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { comments: [] };
-    this.addComment = this.addComment.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  addComment(newComment) {
+  handleAdd(newComment) {
     this.state.comments.push(newComment);
+    this.setState({ comments: this.state.comments });
+  }
+
+  handleDelete(index) {
+    this.state.comments.splice(index, 1);
     this.setState({ comments: this.state.comments });
   }
 
   render() {
     return (
       <div className="App">
-        <h1>6play</h1>
+        <h1>6PLAY</h1>
         <VideoPlayer></VideoPlayer>
-        <CommentList comments={this.state.comments}></CommentList>
-        <AddComment add={this.addComment}></AddComment>
+        <CommentList comments={this.state.comments} delete={this.handleDelete}></CommentList>
+        <AddComment add={this.handleAdd}></AddComment>
       </div>
     );
   }
