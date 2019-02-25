@@ -1,3 +1,11 @@
+# Stack
+
+- [Create React App](https://github.com/facebook/create-react-app)
+- [Git Flow](https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html)
+- [Gitmoji](https://gitmoji.carloscuesta.me)
+
+#
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
