@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import VideoPlayer from './components/VideoPlayer';
+import CommentList from './components/CommentList';
+import AddComment from './components/AddComment';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { comments: [] };
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleAdd(newComment) {
+    this.state.comments.push(newComment);
+    this.setState({ comments: this.state.comments });
+  }
+
+  handleDelete(index) {
+    this.state.comments.splice(index, 1);
+    this.setState({ comments: this.state.comments });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>6PLAY</h1>
+        <VideoPlayer></VideoPlayer>
+        <CommentList comments={this.state.comments} delete={this.handleDelete}></CommentList>
+        <AddComment add={this.handleAdd}></AddComment>
       </div>
     );
   }
