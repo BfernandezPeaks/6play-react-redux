@@ -8,6 +8,7 @@ const mapStateToProps = state => {
 
 const CommentList = ({ comments }) => (
   <div className="comments">
+    <h2>Comments</h2>
     {comments.map((comment, index) => <Comment value={comment} key={index} index={index}></Comment>)}
   </div>
 );
