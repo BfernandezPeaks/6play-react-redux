@@ -1,8 +1,17 @@
 import React from 'react';
+import { addComment } from '../redux/actions';
+import { connect } from "react-redux";
 
-class AddComment extends React.Component {
-  constructor(props) {
-    super(props);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addComment: comment => dispatch(addComment(comment))
+  };
+}
+
+class AddCommentComponent extends React.Component {
+  constructor() {
+    super();
     this.state = { value: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,12 +22,11 @@ class AddComment extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     if (this.state.value) {
-      const date = new Date();
-      this.props.add({ text: this.state.value, date: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` });
+      this.props.addComment(this.state.value);
       this.setState({ value: '' });
     }
-    event.preventDefault();
   }
 
   render() {
@@ -32,4 +40,4 @@ class AddComment extends React.Component {
   }
 }
 
-export default AddComment;
+export default connect(null, mapDispatchToProps)(AddCommentComponent);

@@ -1,28 +1,16 @@
 import React from 'react';
 import Comment from './Comment';
+import { connect } from "react-redux";
 
-class CommentList extends React.Component {
+const mapStateToProps = state => {
+  return { comments: state.comments };
+};
 
-  constructor(props) {
-    super(props);
-    this.deleteHandle = this.deleteHandle.bind(this);
-  }
+const CommentList = ({ comments }) => (
+  <div className="comments">
+    <h2>Comments</h2>
+    {comments.map((comment, index) => <Comment value={comment} key={index} index={index}></Comment>)}
+  </div>
+);
 
-  deleteHandle(index) {
-    this.props.delete(index);
-  }
-
-  render() {
-    const comments = this.props.comments.map(
-      (comment, index) => <Comment value={comment} key={index} index={index} delete={this.deleteHandle}></Comment>
-    );
-    return (
-      <div className="comments">
-        <h3>Comments</h3>
-        {comments}
-      </div>
-    );
-  }
-}
-
-export default CommentList;
+export default connect(mapStateToProps)(CommentList);
