@@ -1,5 +1,13 @@
 import React from 'react';
 import './Comment.css';
+import { deleteComment } from '../redux/actions';
+import { connect } from "react-redux";
+
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteComment: index => dispatch(deleteComment(index))
+  };
+}
 
 class Comment extends React.Component {
 
@@ -9,7 +17,7 @@ class Comment extends React.Component {
   }
 
   handleClick(event) {
-    this.props.delete(this.props.index);
+    this.props.deleteComment(this.props.index);
   }
 
   render() {
@@ -23,4 +31,4 @@ class Comment extends React.Component {
   }
 }
 
-export default Comment;
+export default connect(null, mapDispatchToProps)(Comment);

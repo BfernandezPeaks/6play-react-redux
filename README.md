@@ -1,6 +1,7 @@
 # Stack
 
 - [Create React App](https://github.com/facebook/create-react-app)
+- [React-Redux](https://github.com/reduxjs/react-redux)
 - [Git Flow](https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html)
 - [Gitmoji](https://gitmoji.carloscuesta.me)
 
